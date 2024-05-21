@@ -1,0 +1,49 @@
+<%- include('includes/header.ejs') %>
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs') %>
+            </nav>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1><%=(admin) ? 'Admin Products List' : 'Products List'%></h1>
+                            <% if (products.length){ %> 
+                                <div class="row">
+                                    <% for(product of products){ %>
+                                        <div class="col-md-3">
+                                            <div class="product">
+                                                <div class="text-center">
+                                                    <!-- <img src="<%= product.image %>" class="img-fluid"> -->
+                                                    <img src="/css/download.jpg" class="img-fluid">
+                                                </div>
+                                                <h3><%= product.title%></h3>
+                                                <div>Price <strong><%= product.price%></strong> $</div>
+                                                <p><%= product.description %></p>
+                                                <% if(admin) {%>
+                                                    <div class="my-2 text-center d-flex justify-content-center">
+                                                        <a href="/products/edit/ <%= product.id %>" class="btn btn-primary mx-2">Edit</a>
+                                                        <form action="/products/delete/" method="post">
+                                                            <input type="hidden" name="productId" value="<%= product.id%>">
+                                                            <button class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                <% } else {%>   
+                                                <div class="my-2 text-center d-flex justify-content-center">
+                                                    <a href="/products/details/ <%= product.id %>" class="btn btn-primary mx-2">View Details</a>
+                                                    <%- include('includes/cartButton.ejs', {product: product}) %>
+                                                </div>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                    <%}%>
+                                </div>
+                            <%} else {%>
+                            <div>No Product available</div>
+                            <%}%>
+                        </div>
+                    </div>
+                </div>
+            </main>
+<%- include('includes/footer.ejs') %>

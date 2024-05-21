@@ -1,0 +1,24 @@
+npm init
+npm i nodemon --save
+npm i express //npm i express --save (add --save-dev for production)
+add the following command in package.json inside of scripts:-
+        -> "start": "nodemon app.js"
+run application using following command:-
+        -> npm start
+install body-parser for get a req body data:-
+        npm i body-parser
+Add css using public/css file
+        -> create utils for create a common link for app.js file and we can access anywhere through it
+        -> add rootDir where you want
+install bootstrap for adding style (or) add link in home.html
+        -> if install add directory in app.js for OS independent access directory a bootstrap
+install EJS for showing a data dynamically
+        -> npm i ejs
+        -> pass a data from app.js to 404.ejs using ejs
+Create product.js file and add products, modify home.ejs
+Create addProduct file and ejs
+Create a Controller and simplify the code to moving from routes to respective Controller
+        -> create Controller for our application working like MVC pattern
+Create a modela and moving utils.products to models
+        -> Represents the data and manages the application's data state.
+Save the product details in the new json

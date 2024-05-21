@@ -1,0 +1,45 @@
+<%- include('includes/header.ejs') %>
+<link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs') %>
+            </nav>
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2><%= pageTitle%></h2>
+                    <hr/>
+                    <div class="cart-details">
+                        <div class="cart-title d-flex text-end">
+                            <div>Product Name</div>
+                            <div>Quantity</div>
+                            <div>Price per Product</div>
+                            <div>Total Price</div>
+                            <div>Action</div>
+                        </div>
+                        <% for(let product of cartProducts) {%>
+                            <div class="cart-product d-flex ">
+                                <div><%= product.title%></div>
+                                <div><%= product.quantity%></div>
+                                <div>$ <%= product.price%></div>
+                                <div>$ <%= product.cartPrice%></div>
+                                <div>
+                                    <form action="/cart/delete-item" method="post">
+                                        <input type="hidden" name="productId" value="<%= product.id %>">
+                                        <button class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        <% } %>
+                        <br/>
+                        <div class="text-end">
+                            <h3>Total Price: $ <%= totalPrice%></h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('includes/footer.ejs') %>
